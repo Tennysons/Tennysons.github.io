@@ -1,0 +1,728 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVASCRIPT," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1、Object （存储和传输数据）
+大多数引用数据类型都是Object类型的实例，对于在应用程序中存储和传输数据而言，是非常理想的选择
+123var colors = new Array();console.log(colors instanceof Array); // trueconsole.log(colors instanceof Object); // true
+也因为大多数引用数据类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript引用数据类型01">
+<meta property="og:url" content="http://tennyson.ren/2017/01/08/javascript引用数据类型01/index.html">
+<meta property="og:site_name" content="Tennyson">
+<meta property="og:description" content="1、Object （存储和传输数据）
+大多数引用数据类型都是Object类型的实例，对于在应用程序中存储和传输数据而言，是非常理想的选择
+123var colors = new Array();console.log(colors instanceof Array); // trueconsole.log(colors instanceof Object); // true
+也因为大多数引用数据类">
+<meta property="og:updated_time" content="2017-01-08T04:28:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript引用数据类型01">
+<meta name="twitter:description" content="1、Object （存储和传输数据）
+大多数引用数据类型都是Object类型的实例，对于在应用程序中存储和传输数据而言，是非常理想的选择
+123var colors = new Array();console.log(colors instanceof Array); // trueconsole.log(colors instanceof Object); // true
+也因为大多数引用数据类">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '13929249',
+      author: 'Tennyson'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tennyson.ren/2017/01/08/javascript引用数据类型01/"/>
+
+
+
+
+
+  <title> javascript引用数据类型01 | Tennyson </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tennyson</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://tennyson.ren/2017/01/08/javascript引用数据类型01/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tennyson">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tennyson">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tennyson" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript引用数据类型01
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T01:29:34+08:00">
+                2017-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、Object-（存储和传输数据）"><a href="#1、Object-（存储和传输数据）" class="headerlink" title="1、Object （存储和传输数据）"></a>1、Object （存储和传输数据）</h2><hr>
+<p>大多数引用数据类型都是Object类型的实例，对于在应用程序中存储和传输数据而言，是非常理想的选择</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="built_in">console</span>.log(colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(colors <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>也因为大多数引用数据类型都是Object类型的实例，故对于对象检测会有以上代码中的现象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 两种创建方式</span></div><div class="line"><span class="comment">// 第一种 (new Object) 使用Object构造函数</span></div><div class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">obj1.name = <span class="string">"Tennyson"</span>;</div><div class="line">obj1.age = <span class="number">21</span>;</div><div class="line"></div><div class="line"><span class="comment">// 第二种 (字面量) 实际上不会调用Object构造函数</span></div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">     <span class="attr">name</span>: <span class="string">"Damocles"</span>,</div><div class="line">     <span class="attr">age</span>: <span class="number">22</span> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>对象字面量的创建方法可以向函数传递大量可选参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">     output = <span class="string">""</span>;</div><div class="line">      </div><div class="line">     <span class="keyword">if</span>(<span class="keyword">typeof</span> arges.name == <span class="string">"string"</span>)&#123;</div><div class="line">          output += <span class="string">"Name: "</span> + args.name + <span class="string">"\n"</span>;</div><div class="line">     &#125;</div><div class="line">     </div><div class="line">     <span class="keyword">if</span>(<span class="keyword">typeof</span> arges.age == <span class="string">"number"</span>)&#123;</div><div class="line">          output += <span class="string">"Age: "</span> + args.age + <span class="string">"\n"</span>;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="built_in">console</span>.log(output);  </div><div class="line">     </div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过对象字面量向函数传递多个参数</span></div><div class="line">display(&#123;</div><div class="line">     <span class="attr">name</span>: <span class="string">"Tennyson"</span>,</div><div class="line">     <span class="attr">age</span>: <span class="number">25</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">访问对象的属性与方法：</div><div class="line"></div><div class="line"><span class="comment">// 第一种： "."</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj3 = &#123;</div><div class="line">     <span class="attr">name</span>: <span class="string">"Jane Smith"</span>,</div><div class="line">     <span class="attr">age</span>: <span class="number">23</span></div><div class="line">&#125;; </div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj3.name); <span class="comment">// Jane Smith</span></div><div class="line"></div><div class="line"><span class="comment">// 第二种： "[]"</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj3[<span class="string">"age"</span>]); <span class="comment">// 23</span></div><div class="line"></div><div class="line"><span class="comment">// 第二种的优点：可以通过变量访问属性</span></div><div class="line"><span class="keyword">var</span> propertyName = <span class="string">"name"</span>;</div><div class="line"><span class="built_in">console</span>.log(obj3[propertyName]);  <span class="comment">// Jane Smith</span></div><div class="line"></div><div class="line"><span class="comment">// 或者访问属性中包含的的会导致语法错误的字符：</span></div><div class="line">person[<span class="string">"first name"</span>] = <span class="string">"Nicholas"</span>;</div></pre></td></tr></table></figure>
+<p>注：除非必须使用变量来访问属性，否则推荐使用点表示法</p>
+<h2 id="2、Array"><a href="#2、Array" class="headerlink" title="2、Array"></a>2、Array</h2><hr>
+<p>ECMAScript数组的大小是可以动态调整的，即可以随着数据的增减自动调整长度<br>并且，数组中的每一项可以保存不同类型的数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 两种创建数组的方式：</span></div><div class="line"><span class="comment">// 第一种：使用Array构造函数（new Array） </span></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);  <span class="comment">// 可以预先给数组规定长度</span></div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"blue"</span>);  <span class="comment">// 也可以直接对数组初始化</span></div><div class="line"><span class="comment">// 可以省略new</span></div><div class="line"><span class="keyword">var</span> arr3 = <span class="built_in">Array</span>(<span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// 第二种："[]"</span></div><div class="line"><span class="keyword">var</span> arr4 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>];</div></pre></td></tr></table></figure>
+<h3 id="1-、length属性：保存数组的长度"><a href="#1-、length属性：保存数组的长度" class="headerlink" title="1)、length属性：保存数组的长度"></a>1)、length属性：保存数组的长度</h3><p>特点：length属性不是只读的，即可以通过设置该属性来移除或向数组中添加新项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line">colors.length = <span class="number">2</span>;</div><div class="line"><span class="built_in">console</span>.log(colors[<span class="number">2</span>]); <span class="comment">// undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 或在末尾添加新项</span></div><div class="line">colors[colors.length] = <span class="string">"yellow"</span>;</div><div class="line"><span class="built_in">console</span>.log(colors.length); <span class="comment">// 3</span></div><div class="line"><span class="comment">// 数组的最后一项索引始终是length-1,因此下一项的位置就是length,每当在数组末尾添加新项,其length属性都会自动更新</span></div></pre></td></tr></table></figure>
+<h3 id="2-、检测数组"><a href="#2-、检测数组" class="headerlink" title="2)、检测数组"></a>2)、检测数组</h3><h4 id="方法一：instanceof操作符"><a href="#方法一：instanceof操作符" class="headerlink" title="方法一：instanceof操作符"></a>方法一：instanceof操作符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123; ... &#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：instanceof操作符假定只有一个全局执行环境，若网页中包含多个框架，那么就会出现问题，故ECAMScript新增了isArray()方法以解决此问题</strong> </p>
+<h4 id="方法二：Array-isArray-用于确定某个值到底是不是数组"><a href="#方法二：Array-isArray-用于确定某个值到底是不是数组" class="headerlink" title="方法二：Array.isArray() 用于确定某个值到底是不是数组"></a>方法二：Array.isArray() 用于确定某个值到底是不是数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(value))&#123; ... &#125;</div></pre></td></tr></table></figure>
+<h3 id="3-、转换方法（toString-、valueOf-）"><a href="#3-、转换方法（toString-、valueOf-）" class="headerlink" title="3)、转换方法（toString()、valueOf()）"></a>3)、转换方法（toString()、valueOf()）</h3><p><strong>注：所有对象都包toLocaleString()、toString()、valueOf()方法</strong></p>
+<blockquote>
+<p>toString(): 调用数组的该方法会返回数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line"><span class="keyword">var</span> a = colors.toString(); <span class="comment">// red,blue,yellow</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// string</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf(): 调用数组的该方法返回的仍是数组,为创建这个字符串它会调用每一项的toString()方法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line"><span class="keyword">var</span> b = colors.valueOf();</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// true</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; b.length; i++)&#123;   </div><div class="line">     <span class="built_in">console</span>.log(b[i]); <span class="comment">// red blue green</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>toLocaleString()：经常会返回与toString()和valueOf()相同的值，但并不总是这样<br>在调用数组的toLocaleString()方法时，会创建一个数组值得以逗号分隔的字符串，而与前两个方法唯一不同之处在于，这次为了取得每一项的值，调用的是每一项的toLocaleString()方法，而不是toString()方法**</p>
+</blockquote>
+<p><strong>调用以上三种方法，默认情况下都会以逗号分隔字符串的形式返回数组项，若使用join()方法，则可以使用不同分隔符构建这个字符串</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// join()方法</span></div><div class="line"><span class="built_in">console</span>.log(colors.join()); <span class="comment">// red,blue,yellow</span></div><div class="line"><span class="built_in">console</span>.log(colors.join(<span class="string">"|"</span>)); <span class="comment">// red|blue|yellow</span></div><div class="line"><span class="built_in">console</span>.log(colors.join(<span class="string">"."</span>)); <span class="comment">// red.blue.yellow</span></div></pre></td></tr></table></figure>
+<p><strong>注意：若数组的某项的值为null或undefinied,那么该值的join()、toLocaleString()、toString()、valueOf()方法返回的结果中以空字符串表示</strong></p>
+<h3 id="4-、栈方法与队列方法"><a href="#4-、栈方法与队列方法" class="headerlink" title="4)、栈方法与队列方法"></a>4)、栈方法与队列方法</h3><h4 id="栈方法-LIFO-：push-方法与pop-方法"><a href="#栈方法-LIFO-：push-方法与pop-方法" class="headerlink" title="栈方法(LIFO)：push()方法与pop()方法"></a>栈方法(LIFO)：push()方法与pop()方法</h4><blockquote>
+<p>push()方法可以任意接受任意数量的参数，并把它们逐个添加到数组末尾，并返回修改后的数组长度<br>pop()方法则从数组的末尾移除最后一项，减少数组的length值，并返回移除的值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors1 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> count = colors1.push(<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"pink"</span>);</div><div class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 3</span></div><div class="line"></div><div class="line">count = colors1.push(<span class="string">"black"</span>);</div><div class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 4</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> item = colors1.pop();</div><div class="line"><span class="built_in">console</span>.log(item); <span class="comment">// black</span></div><div class="line"><span class="built_in">console</span>.log(colors1.length); <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="comment">// 也可以将栈方法与其他数组方法连用</span></div><div class="line">colors1.push(<span class="string">"brown"</span>);</div><div class="line">colors1[<span class="number">3</span>] = <span class="string">"black"</span>;</div><div class="line"><span class="built_in">console</span>.log(colors1.length); <span class="comment">// 4</span></div><div class="line"></div><div class="line">item = colors1.pop(); </div><div class="line"><span class="built_in">console</span>.log(item); <span class="comment">// black</span></div></pre></td></tr></table></figure>
+<h4 id="队列方法-FIFO-push-方法、shift-方法与unshift-方法"><a href="#队列方法-FIFO-push-方法、shift-方法与unshift-方法" class="headerlink" title="队列方法(FIFO):push()方法、shift()方法与unshift()方法"></a>队列方法(FIFO):push()方法、shift()方法与unshift()方法</h4><blockquote>
+<p>shift()方法能够移除数组中的第一项并返回该项的值，同时将数组长度length减1<br>unshift()方法与shift()方法相反，能够在数组前端添加任意个项并返回数组的长度，因此使用unshift()方法与pop()方法可以反向模拟队列，即在数组的前端添加项，末尾移除项</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors2 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> count = colors2.push(<span class="string">"red"</span>, <span class="string">"black"</span>);</div><div class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> item = colors2.shift();</div><div class="line"><span class="built_in">console</span>.log(item); <span class="comment">// red</span></div><div class="line"></div><div class="line">count = color2.unshift(<span class="string">"green"</span>, <span class="string">"yellow"</span>);</div><div class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 3</span></div><div class="line"></div><div class="line">item = colors2.pop();</div><div class="line"><span class="built_in">console</span>.log(item); <span class="comment">// black</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVASCRIPT/" rel="tag"># JAVASCRIPT</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/面向对象特征/" rel="next" title="面向对象的特征">
+                <i class="fa fa-chevron-left"></i> 面向对象的特征
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/18/JavaArray/" rel="prev" title="Java Array">
+                Java Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Tennyson" />
+          <p class="site-author-name" itemprop="name">Tennyson</p>
+          <p class="site-description motion-element" itemprop="description">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Object-（存储和传输数据）"><span class="nav-number">1.</span> <span class="nav-text">1、Object （存储和传输数据）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Array"><span class="nav-number">2.</span> <span class="nav-text">2、Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-、length属性：保存数组的长度"><span class="nav-number">2.1.</span> <span class="nav-text">1)、length属性：保存数组的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-、检测数组"><span class="nav-number">2.2.</span> <span class="nav-text">2)、检测数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：instanceof操作符"><span class="nav-number">2.2.1.</span> <span class="nav-text">方法一：instanceof操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：Array-isArray-用于确定某个值到底是不是数组"><span class="nav-number">2.2.2.</span> <span class="nav-text">方法二：Array.isArray() 用于确定某个值到底是不是数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-、转换方法（toString-、valueOf-）"><span class="nav-number">2.3.</span> <span class="nav-text">3)、转换方法（toString()、valueOf()）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-、栈方法与队列方法"><span class="nav-number">2.4.</span> <span class="nav-text">4)、栈方法与队列方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈方法-LIFO-：push-方法与pop-方法"><span class="nav-number">2.4.1.</span> <span class="nav-text">栈方法(LIFO)：push()方法与pop()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#队列方法-FIFO-push-方法、shift-方法与unshift-方法"><span class="nav-number">2.4.2.</span> <span class="nav-text">队列方法(FIFO):push()方法、shift()方法与unshift()方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tennyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

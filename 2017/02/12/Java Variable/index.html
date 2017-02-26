@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="数据类型:基本数据类型：1. 数值型：
+    1)、整数类型： byte（1字节） 、short（2字节）、int（4字节）、long（8字节）
+
+    注意：整型数据默认为int类型 定义为long类型时末尾需加“L”或“l”不添加不会报错
+    long  l1 = 12344L;
+
+    2)、浮点类型： float（4字节）、double（8字节）
+    注意：浮点型默认为dou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Variable">
+<meta property="og:url" content="http://tennyson.ren/2017/02/12/Java Variable/index.html">
+<meta property="og:site_name" content="Tennyson">
+<meta property="og:description" content="数据类型:基本数据类型：1. 数值型：
+    1)、整数类型： byte（1字节） 、short（2字节）、int（4字节）、long（8字节）
+
+    注意：整型数据默认为int类型 定义为long类型时末尾需加“L”或“l”不添加不会报错
+    long  l1 = 12344L;
+
+    2)、浮点类型： float（4字节）、double（8字节）
+    注意：浮点型默认为dou">
+<meta property="og:updated_time" content="2017-02-12T16:43:43.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Variable">
+<meta name="twitter:description" content="数据类型:基本数据类型：1. 数值型：
+    1)、整数类型： byte（1字节） 、short（2字节）、int（4字节）、long（8字节）
+
+    注意：整型数据默认为int类型 定义为long类型时末尾需加“L”或“l”不添加不会报错
+    long  l1 = 12344L;
+
+    2)、浮点类型： float（4字节）、double（8字节）
+    注意：浮点型默认为dou">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '13929249',
+      author: 'Tennyson'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tennyson.ren/2017/02/12/Java Variable/"/>
+
+
+
+
+
+  <title> Java Variable | Tennyson </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tennyson</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://tennyson.ren/2017/02/12/Java Variable/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tennyson">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tennyson">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tennyson" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java Variable
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T00:00:00+08:00">
+                2017-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型:"></a>数据类型:</h2><h3 id="基本数据类型："><a href="#基本数据类型：" class="headerlink" title="基本数据类型："></a>基本数据类型：</h3><pre><code>1. 数值型：
+    1)、整数类型： byte（1字节） 、short（2字节）、int（4字节）、long（8字节）
+
+    注意：整型数据默认为int类型 定义为long类型时末尾需加“L”或“l”不添加不会报错
+    long  l1 = 12344L;
+
+    2)、浮点类型： float（4字节）、double（8字节）
+    注意：浮点型默认为double类型，定义float类型是需在末尾添加“F&quot;或“f”不添加时报错
+    float   f1 =  12.3F;
+
+2. 字符型： char（2字节）
+    注意： 每个char类型变量只能存放一个字母（如一个英文字母、一个汉字、一个日文等），用单引号
+    括起，若要表示多个字母，则应用String类型，用双引号括起
+    char  c1 = &apos;c&apos;;
+
+3. 布尔类型： boolean
+    注意： boolean类型只能取值true或false  ，不能取值null
+</code></pre><a id="more"></a>
+<h3 id="引用数据类型："><a href="#引用数据类型：" class="headerlink" title="引用数据类型："></a>引用数据类型：</h3><pre><code>1. 类： class (字符串属于类)
+   本质上，一个类就是程序员定义的类型，并且，类是一种引用数据类型，表面上看，对象引用变量中似乎存放的一个对象，但事实上，它只是包含了该对象的引用
+
+2. 接口： interface
+
+3. 数组： 
+   Java中，数组被看做对象，一个数组变量实际上是一个包含数组引用的变量，
+   数组既可以存储基本数据类型值，也可以存储对象
+  （详见[Java Array][1]） 
+</code></pre><h3 id="字符串：String-类-也是一种常用的数据类型"><a href="#字符串：String-类-也是一种常用的数据类型" class="headerlink" title="字符串：String  类  也是一种常用的数据类型"></a>字符串：String  类  也是一种常用的数据类型</h3><p>注意：字符串与基本数据类型之间只能进行连接运算：+   将两者拼接在一起   运算结果仍是一个字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String  nation = <span class="string">"what is your name?"</span>；</div><div class="line">String nation1 = nation + m1 <span class="comment">//  "what is your name?57"</span></div></pre></td></tr></table></figure>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>类型转换是一种将一种数据类型的值转换为另一种数据类型的操作</p>
+<h4 id="自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型"><a href="#自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型" class="headerlink" title="自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型"></a>自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型</h4><p>总是可以将一个数值赋给支持更大数值范围类型的变量，若不进行类型转换，就不能把一个值赋给范围较小类型的变量</p>
+<blockquote>
+<p>char、byte、short ===&gt; int  ===&gt; long ===&gt; float ===&gt; double</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">short</span> s = <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> i;</div><div class="line">i = s; <span class="comment">// 自动转换</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>char、byte、short三者之间运算得到的结果默认取int类型</p>
+</blockquote>
+<h4 id="强制类型转换：范围大类型数据的转换为范围小的类型数据"><a href="#强制类型转换：范围大类型数据的转换为范围小的类型数据" class="headerlink" title="强制类型转换：范围大类型数据的转换为范围小的类型数据"></a>强制类型转换：范围大类型数据的转换为范围小的类型数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span>  l1 = <span class="number">12345L</span>;</div><div class="line"><span class="keyword">int</span> m1  = (<span class="keyword">int</span>)l1; <span class="comment">// 57</span></div></pre></td></tr></table></figure>
+<p>注意：  如果要将一个值赋给范围较小类型的变量，若在这种情况下没有使用强制类型转换，就会出现编译错误，<strong>强制类型转换的问题：容易损失精度</strong></p>
+<h2 id="变量及其作用域"><a href="#变量及其作用域" class="headerlink" title="变量及其作用域"></a>变量及其作用域</h2><p>每个变量都代表一个存储值得内存位置，声明一个变量即告诉编译器这个变量存放什么类型的值<br>每个变量都有其作用范围，并且，<strong>一个变量在可以使用前，必须被声明和初始化</strong></p>
+<h3 id="基本类型变量与引用变量"><a href="#基本类型变量与引用变量" class="headerlink" title="基本类型变量与引用变量"></a>基本类型变量与引用变量</h3><h4 id="基本类型变量："><a href="#基本类型变量：" class="headerlink" title="基本类型变量："></a>基本类型变量：</h4><pre><code>即其数据类型为基本数据类型，其存储在内存的栈空间中，对应内存中存储的是基本类型的值
+将一个变量赋值给另一个变量时：
+对于基本类型变量，就是将一个变量的实际值赋给另一个变量，之后改变其中任何一个变量的值，都不会影
+响到另一个变量的实际值
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">3</span>;</div><div class="line">System.out.println(<span class="string">"a: "</span> + a); <span class="comment">// 2</span></div><div class="line">System.out.println(<span class="string">"b: "</span> + b); <span class="comment">// 3</span></div><div class="line"></div><div class="line">b = a;</div><div class="line">System.out.println(<span class="string">"a: "</span> + a); <span class="comment">// 2</span></div><div class="line">System.out.println(<span class="string">"b: "</span> + b); <span class="comment">// 2</span></div><div class="line"></div><div class="line">a = <span class="number">4</span>;</div><div class="line">System.out.println(<span class="string">"a: "</span> + a); <span class="comment">// 4</span></div><div class="line">System.out.println(<span class="string">"b: "</span> + b); <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h4 id="引用类型变量："><a href="#引用类型变量：" class="headerlink" title="引用类型变量："></a>引用类型变量：</h4><pre><code>对应内存所存储的值是一个引用，即对象的存储地址
+对于引用类型变量，就是将一个变量的引用赋给另一个变量，之后二者都指向同一个对象，
+故再改变其中意一个变量的属性值，另一个变量的相应属性值也会改变
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCircle</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Circle circle1 = <span class="keyword">new</span> Circle();</div><div class="line">        circle1.radius = <span class="number">1</span>;</div><div class="line">        </div><div class="line">        Circle circle2 = <span class="keyword">new</span> Circle();</div><div class="line">        circle2.radius = <span class="number">3</span>;</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"Circle1's radius: "</span> + circle1.radius); <span class="comment">// 1.0</span></div><div class="line">        System.out.println(<span class="string">"Circle2's radius: "</span> + circle2.radius); <span class="comment">// 3.0</span></div><div class="line">        </div><div class="line">        circle2 = circle1;</div><div class="line">        System.out.println(<span class="string">"Circle1's radius: "</span> + circle1.radius); <span class="comment">// 1.0</span></div><div class="line">        System.out.println(<span class="string">"Circle2's radius: "</span> + circle2.radius); <span class="comment">// 1.0</span></div><div class="line">        </div><div class="line">        circle2.radius = <span class="number">9</span>;</div><div class="line">        System.out.println(<span class="string">"Circle1's radius: "</span> + circle1.radius); <span class="comment">// 9.0</span></div><div class="line">        System.out.println(<span class="string">"Circle2's radius: "</span> + circle2.radius); <span class="comment">// 9.0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> </span>&#123;</div><div class="line">    <span class="keyword">double</span> radius;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="不同数据类型变量的默认值"><a href="#不同数据类型变量的默认值" class="headerlink" title="不同数据类型变量的默认值"></a>不同数据类型变量的默认值</h4><p>基本数据类型:<br>byte、short、int、long: 默认值为 0<br>float、double: 默认值为 0.0<br>char: 默认值为 ‘\u0000’<br>boolean: 默认值为 false<br>引用数据类型:<br>声明引用数据类型变量而未初始化时，应对其进行显示赋值为null</p>
+<p><strong>注意：  Java中没有给方法中的局部变量赋默认值</strong></p>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>方法中定义的变量称为局部变量，其作用范围(作用域)从变量声明的地方开始，直到包含该变量的块结束为止，并且其在使用前必须进行声明和赋值</p>
+<p>方法的参数也是一个局部变量，一个方法的作用域涵盖整个方法</p>
+<p>for等循环体中声明的变量其作用域仅限于从声明处到其循环体结束，但在其头部（即小括号内）声明的局部变量作用域为整个循环体</p>
+<p>可以在一个方法中的不同快中声明同名局部变量，但不能再嵌套快中或同一块中两次声明同一局部变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这是正确的：</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123; ... &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="comment">// 这是错误的：</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123; ... &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="类变量（数据域）"><a href="#类变量（数据域）" class="headerlink" title="类变量（数据域）"></a>类变量（数据域）</h3><p>一个类的实例变量和静态变量被称为类变量或数据域<br>无论在何处声明，类变量的作用域都是整个类，类变量和方法可以在类以任意顺序出现，但是当一个类变量是基于另一个数据域的引用进行初始化时，则必须顺序出现（即被引用的先声明）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="comment">// 这种情况下first变量必须先与last变量声明</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> first;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> last = first + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>类变量只能声明一次，但是在一个方法内的不同非嵌套块中，可以多次声明同名变量<br>若局部变量和一个类变量同名时，那么局部变量优先，而同名类变量被隐藏</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name = <span class="string">"Tennyson"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">12</span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">        String name = <span class="string">"Damocles"</span>;</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"name: "</span> + name); <span class="comment">// Damocles</span></div><div class="line">        System.out.println(<span class="string">"age: "</span> + age); <span class="comment">// 12</span></div><div class="line">        <span class="comment">// 此时要调用类变量应使用this</span></div><div class="line">        System.out.println(<span class="string">"this.name: "</span> + <span class="keyword">this</span>.name); <span class="comment">// Tennyson</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/09/Web服务器与客户端间的通信/" rel="next" title="Web服务器与客户端间的通信">
+                <i class="fa fa-chevron-left"></i> Web服务器与客户端间的通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/20/git学习笔记2---更新远程代码到本地仓库/" rel="prev" title="git学习笔记2 --- 更新远程代码到本地仓库">
+                git学习笔记2 --- 更新远程代码到本地仓库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Tennyson" />
+          <p class="site-author-name" itemprop="name">Tennyson</p>
+          <p class="site-description motion-element" itemprop="description">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型："><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用数据类型："><span class="nav-number">1.2.</span> <span class="nav-text">引用数据类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串：String-类-也是一种常用的数据类型"><span class="nav-number">1.3.</span> <span class="nav-text">字符串：String  类  也是一种常用的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">1.4.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型"><span class="nav-number">1.4.1.</span> <span class="nav-text">自动类型转换：范围小的类型数据与范围大的类型数据之间运算得到的数据类型取大范围的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制类型转换：范围大类型数据的转换为范围小的类型数据"><span class="nav-number">1.4.2.</span> <span class="nav-text">强制类型转换：范围大类型数据的转换为范围小的类型数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量及其作用域"><span class="nav-number">2.</span> <span class="nav-text">变量及其作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型变量与引用变量"><span class="nav-number">2.1.</span> <span class="nav-text">基本类型变量与引用变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型变量："><span class="nav-number">2.1.1.</span> <span class="nav-text">基本类型变量：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型变量："><span class="nav-number">2.1.2.</span> <span class="nav-text">引用类型变量：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同数据类型变量的默认值"><span class="nav-number">2.1.3.</span> <span class="nav-text">不同数据类型变量的默认值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部变量"><span class="nav-number">2.2.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类变量（数据域）"><span class="nav-number">2.3.</span> <span class="nav-text">类变量（数据域）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tennyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

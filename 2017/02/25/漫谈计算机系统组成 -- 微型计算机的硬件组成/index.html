@@ -1,0 +1,700 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="计算机," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="计算机的发展从1936年一个叫阿兰·麦席森·图灵的数学家提出的一种抽象的计算模型 —— 图灵机 (Turing Machine），假想可以有一种虚拟的机器可以取代人们进行数学运算，到1946年世界上第一台电子计算机“ENIAC” —— 用了18000个电子管，占地170平方米，重达30吨，耗电功率约150千瓦，每秒钟可进行5000次运算的一个庞然大物的诞生，再到1981年美国IBM公司推出第一代微">
+<meta property="og:type" content="article">
+<meta property="og:title" content="漫谈计算机系统组成 -- 微型计算机的硬件组成">
+<meta property="og:url" content="http://tennyson.ren/2017/02/25/漫谈计算机系统组成 -- 微型计算机的硬件组成/index.html">
+<meta property="og:site_name" content="Tennyson">
+<meta property="og:description" content="计算机的发展从1936年一个叫阿兰·麦席森·图灵的数学家提出的一种抽象的计算模型 —— 图灵机 (Turing Machine），假想可以有一种虚拟的机器可以取代人们进行数学运算，到1946年世界上第一台电子计算机“ENIAC” —— 用了18000个电子管，占地170平方米，重达30吨，耗电功率约150千瓦，每秒钟可进行5000次运算的一个庞然大物的诞生，再到1981年美国IBM公司推出第一代微">
+<meta property="og:image" content="http://p1.bpimg.com/567571/d458a139e17bfd47.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/7dec6c4196f1f34c.png">
+<meta property="og:updated_time" content="2017-02-25T16:58:22.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="漫谈计算机系统组成 -- 微型计算机的硬件组成">
+<meta name="twitter:description" content="计算机的发展从1936年一个叫阿兰·麦席森·图灵的数学家提出的一种抽象的计算模型 —— 图灵机 (Turing Machine），假想可以有一种虚拟的机器可以取代人们进行数学运算，到1946年世界上第一台电子计算机“ENIAC” —— 用了18000个电子管，占地170平方米，重达30吨，耗电功率约150千瓦，每秒钟可进行5000次运算的一个庞然大物的诞生，再到1981年美国IBM公司推出第一代微">
+<meta name="twitter:image" content="http://p1.bpimg.com/567571/d458a139e17bfd47.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '13929249',
+      author: 'Tennyson'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tennyson.ren/2017/02/25/漫谈计算机系统组成 -- 微型计算机的硬件组成/"/>
+
+
+
+
+
+  <title> 漫谈计算机系统组成 -- 微型计算机的硬件组成 | Tennyson </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tennyson</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://tennyson.ren/2017/02/25/漫谈计算机系统组成 -- 微型计算机的硬件组成/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tennyson">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tennyson">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tennyson" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                漫谈计算机系统组成 -- 微型计算机的硬件组成
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-25T00:00:00+08:00">
+                2017-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="计算机的发展"><a href="#计算机的发展" class="headerlink" title="计算机的发展"></a>计算机的发展</h2><p>从1936年一个叫阿兰·麦席森·图灵的数学家提出的一种抽象的计算模型 —— 图灵机 (Turing Machine），假想可以有一种虚拟的机器可以取代人们进行数学运算，到1946年世界上第一台电子计算机“ENIAC” —— 用了18000个电子管，占地170平方米，重达30吨，耗电功率约150千瓦，每秒钟可进行5000次运算的一个庞然大物的诞生，再到1981年美国IBM公司推出第一代微型计算机IBM-PC，再到21世纪的今天，笔记本电脑、pad，以及人手一部的智能手机，计算机的身影随处可见，经过七八十年的发展，计算机已经从专业领域的一个庞然大物变为了如今一个轻巧的生活必需品，现代微型计算机在互联网的帮助下向着高速，智能化方向发展，而其硬件体系结构依旧没有脱离上世纪冯.诺依曼所提出的设计思想。</p>
+<a id="more"></a>
+<h2 id="计算机系统组成"><a href="#计算机系统组成" class="headerlink" title="计算机系统组成"></a>计算机系统组成</h2><p>计算机系统由硬件和软件两部分组成<br><img src="http://p1.bpimg.com/567571/d458a139e17bfd47.png" alt=""></p>
+<h3 id="微型计算机的硬件组成"><a href="#微型计算机的硬件组成" class="headerlink" title="微型计算机的硬件组成"></a>微型计算机的硬件组成</h3><h4 id="冯诺依曼计算机"><a href="#冯诺依曼计算机" class="headerlink" title="冯诺依曼计算机"></a>冯诺依曼计算机</h4><p>1945年，冯.诺依曼提出了一种“<strong>存储程序和程序控制</strong>”的设计思想，这一设计思想一直沿用至今，按照这一设计思想，微型计算机的硬件由 <strong>运算器、控制器、存储器、输入设备和输出设备</strong> 五大基本部件组成。其体系结构如下图所示：<br><img src="http://p1.bpimg.com/567571/7dec6c4196f1f34c.png" alt=""></p>
+<h4 id="微处理器"><a href="#微处理器" class="headerlink" title="微处理器"></a>微处理器</h4><p>处理器(CPU)是计算机的核心,  包括运算器和控制器。</p>
+<p>其中运算器用于实现算术运算和逻辑运算，而控制器则是计算机的指挥系统。控制器访问存储器（下文将会提到），并从中获取指令和原始数据，指令决定计算机进行什么操作，如从何处获取数据，进行怎么的运算，又将运算结果存入哪里等等。</p>
+<p>处理器的性能基本决定了计算机的性能，尽管如之前所说的那样，计算机经过几十年的发展，其硬件体系结构并没有脱离冯.诺依曼所提出的设计思想，但现代微型计算机的发展基本遵循着摩尔定律，即微处理器的性能每隔18个月提高一倍，而价格下降一倍。计算机就是如此迅速的发展着，在人们的工作与生活中占据越来越重要的地位，甚至可以说现代人的生活已经无法脱离计算机。</p>
+<h4 id="内存储器"><a href="#内存储器" class="headerlink" title="内存储器"></a>内存储器</h4><blockquote>
+<p>内存储器用于存放计算机中正在运行的程序和将会用到的数据，又称之为主存或者内存。<br>内存分为随机存储器RAM(Random Access Menory)，和只读存储器ROM(Read-Only Memory).</p>
+</blockquote>
+<p>RAM用于存取临时数据，断电时信息就会丢失，而ROM只能进行数据读取，不能写入，其信息在断电后仍能保存。</p>
+<p>其存取速度相对较快，但先比与CPU的运算速度依旧很慢。</p>
+<h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><blockquote>
+<p>总线控制逻辑，是连接计算机各组成部分的数据通路。负责产生和获取各个操作所需的信号。</p>
+</blockquote>
+<h4 id="外存储器"><a href="#外存储器" class="headerlink" title="外存储器"></a>外存储器</h4><p>外存储器用于存放大量的数据和程序，其容量大，价格相对便宜，但存取速度慢，如：硬盘、光盘、U盘等等。</p>
+<p>计算机中的数据和指令以二进制的形式，不加区分的存放在存储器中，在运行程序时，CPU根据指令，对存储器中的数据进行操作，但由于计算机中各个部件运算、存取速度的巨大差异，使得硬件资源无法充分利用。</p>
+<h3 id="微型计算机的软件部分"><a href="#微型计算机的软件部分" class="headerlink" title="微型计算机的软件部分"></a>微型计算机的软件部分</h3><p><a href="#">漫谈计算机组成 – 微型计算机的软件组成</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机/" rel="tag"># 计算机</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/git学习笔记2---更新远程代码到本地仓库/" rel="next" title="git学习笔记2 --- 更新远程代码到本地仓库">
+                <i class="fa fa-chevron-left"></i> git学习笔记2 --- 更新远程代码到本地仓库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/26/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Tennyson" />
+          <p class="site-author-name" itemprop="name">Tennyson</p>
+          <p class="site-description motion-element" itemprop="description">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机的发展"><span class="nav-number">1.</span> <span class="nav-text">计算机的发展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机系统组成"><span class="nav-number">2.</span> <span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微型计算机的硬件组成"><span class="nav-number">2.1.</span> <span class="nav-text">微型计算机的硬件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冯诺依曼计算机"><span class="nav-number">2.1.1.</span> <span class="nav-text">冯诺依曼计算机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微处理器"><span class="nav-number">2.1.2.</span> <span class="nav-text">微处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存储器"><span class="nav-number">2.1.3.</span> <span class="nav-text">内存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-number">2.1.4.</span> <span class="nav-text">总线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外存储器"><span class="nav-number">2.1.5.</span> <span class="nav-text">外存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微型计算机的软件部分"><span class="nav-number">2.2.</span> <span class="nav-text">微型计算机的软件部分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tennyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
