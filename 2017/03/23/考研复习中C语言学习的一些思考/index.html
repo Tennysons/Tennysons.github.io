@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="c," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言一、我认为许多事情就是思想观念上的事情，毛主席讲，战略上要藐视敌人，战术上要重视敌人。我想对于C语言的学习也是这样，我所接触的一些考研要考C语言的同学，总能听到他们说一句：C语言好难啊，我学不会…还没有开始学，自己就把自己pass掉了，抱着这样的想法，怎么可能学得好呢？在开始学习它之前，首先应该扭转自己的偏见，之后正视它，认真对待它，学习它，这样就会事半功倍，否则事倍功半。
+二、学习不能学的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研复习中C语言学习的一些思考">
+<meta property="og:url" content="http://tennyson.ren/2017/03/23/考研复习中C语言学习的一些思考/index.html">
+<meta property="og:site_name" content="Tennyson">
+<meta property="og:description" content="前言一、我认为许多事情就是思想观念上的事情，毛主席讲，战略上要藐视敌人，战术上要重视敌人。我想对于C语言的学习也是这样，我所接触的一些考研要考C语言的同学，总能听到他们说一句：C语言好难啊，我学不会…还没有开始学，自己就把自己pass掉了，抱着这样的想法，怎么可能学得好呢？在开始学习它之前，首先应该扭转自己的偏见，之后正视它，认真对待它，学习它，这样就会事半功倍，否则事倍功半。
+二、学习不能学的">
+<meta property="og:image" content="http://i2.buimg.com/567571/7a97bace1727eb72.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/5e3afcc67151c54f.jpg">
+<meta property="og:updated_time" content="2017-03-24T05:32:51.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="考研复习中C语言学习的一些思考">
+<meta name="twitter:description" content="前言一、我认为许多事情就是思想观念上的事情，毛主席讲，战略上要藐视敌人，战术上要重视敌人。我想对于C语言的学习也是这样，我所接触的一些考研要考C语言的同学，总能听到他们说一句：C语言好难啊，我学不会…还没有开始学，自己就把自己pass掉了，抱着这样的想法，怎么可能学得好呢？在开始学习它之前，首先应该扭转自己的偏见，之后正视它，认真对待它，学习它，这样就会事半功倍，否则事倍功半。
+二、学习不能学的">
+<meta name="twitter:image" content="http://i2.buimg.com/567571/7a97bace1727eb72.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '13929249',
+      author: 'Tennyson'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tennyson.ren/2017/03/23/考研复习中C语言学习的一些思考/"/>
+
+
+
+
+
+  <title> 考研复习中C语言学习的一些思考 | Tennyson </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tennyson</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://tennyson.ren/2017/03/23/考研复习中C语言学习的一些思考/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tennyson">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tennyson">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tennyson" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                考研复习中C语言学习的一些思考
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T00:00:00+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/若有所思/" itemprop="url" rel="index">
+                    <span itemprop="name">若有所思</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://i2.buimg.com/567571/7a97bace1727eb72.png" alt=""></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一、我认为许多事情就是思想观念上的事情，毛主席讲，战略上要藐视敌人，战术上要重视敌人。我想对于C语言的学习也是这样，我所接触的一些考研要考C语言的同学，总能听到他们说一句：C语言好难啊，我学不会…还没有开始学，自己就把自己pass掉了，抱着这样的想法，怎么可能学得好呢？在开始学习它之前，首先应该扭转自己的偏见，之后正视它，认真对待它，学习它，这样就会事半功倍，否则事倍功半。</p>
+<p>二、学习不能学的一团浆糊，不能说跟着课本过一遍之后，自己去回想好像似乎什么都知道一点，又似乎什么都想不起来。学习完C语言之后(第一遍看课本)，至少应该能清楚的讲明白，C语言可以分成几个部分，哪几部分比较简单，而哪几部分相对较难(第一遍学不易理解的)。这样清晰明了的学习，可以使我们增强自信，相信自己可以学好它，也使得再次学习也更有针对性。<br><a id="more"></a></p>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>根据前言所述，思想观念转变之后，首先应该做的就是尽快弄清楚，C语言都有什么？这时候，我首先想到的是去看一本书的前言和目录，前言往往会对书的内容做一些简单介绍，而目录的各个章节就是这本书的基本骨架。这会给我留下一个最初的印象——我将要学习的都包括哪些内容。</p>
+<p>C语言都包括什么呢(一门语言最基本的都有什么)？</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>变量，从字面上来理解，就是一个可变的量，而在编程中，变量就是一个用于临时存储值的存储器，就像我们日常生活中需要将各种东西分门别类的整理，并放在一个个柜子里一样，在我们编程中总有各种类型的数据，如int型、char类型等等，这些数据需要不同的盒子去存储，C语言把数据存放在变量中，变量就是计算机内存里的一个盒子，用来保存保存特定类型的数据，而这个盒子中东西是可以改变的，例如我放一个数字1放进这个盒子，这个盒子现在装的是数字1，然后我又放数字2进入，原来的数字1就自动替换成数字2，然后你放什么进去，它就是总是替换，它是可变的，但需要注意的是，一种类型的盒子（变量）只能用于存放相应类型的数据，我们通过声明变量来创建盒子，通过变量名来标识盒子。</p>
+<p>注: 注意变量名的命名规则</p>
+<h3 id="顺序、分支、循环"><a href="#顺序、分支、循环" class="headerlink" title="顺序、分支、循环"></a>顺序、分支、循环</h3><p>我们所写的程序总是由这几部分构成</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>略</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>C语言函数传参无论什么类型都是值传递，也就是说，函数参数是实际传入参数的复制或拷贝，而不是其本身，此时应注意普通类型变量和引用类型变量传参的区别</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">swap1</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">swap2</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span></span>;</div><div class="line">    <span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</div><div class="line">    </div><div class="line">    swap1(a, b);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\tb=%d\n"</span>, a, b); <span class="comment">// a=3  b=4</span></div><div class="line">    </div><div class="line">    swap2(&amp;a, &amp;b);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\tb=%d\n"</span>, a, b); <span class="comment">// a=4  b=3</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap1</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = a;</div><div class="line">    a = b;</div><div class="line">    b = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap2</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = *a;</div><div class="line">    *a = *b;</div><div class="line">    *b = temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：对于一个带有参数的函数，首先应当考虑所传参数的合法性，不能想当然的认为方法的使用者，总会传入正确的合法的值，应当考虑到当方法的使用者传入非法参数时的处理措施</p>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>指针，就是存储单元的地址。一个变量的地址称为该变量的指针，即指针变量的值就是一个内存地址<br>我们之前了解到，变量可以看做一个盒子，用于存储不同的数据，指针变量与之相同，也可以看做是一个盒子，只不过普通变量是用于存储需要的数据如一个整数、一个字符等等，而指针变量用于存储那些普通变量在内存中的地址</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个普通整型变量i其值为5 假设变量 i 在内存中的地址为 2000</span></div><div class="line"><span class="keyword">int</span> i = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个整型指针变量，用于存储整型变量所在内存的地址</span></div><div class="line"><span class="keyword">int</span> *p; </div><div class="line"></div><div class="line">p = &amp;i; <span class="comment">// 将指针p指向i</span></div><div class="line"></div><div class="line"><span class="comment">// p 表示其指向的某个变量的地址</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, p); <span class="comment">// 2000 </span></div><div class="line"><span class="comment">// *p 代表指针变量指向的普通变量</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, *p); <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<p>指针是一个地址，而指针变量是存放地址的变量</p>
+<p>应当注意，不同类型的数据在内存中所占字节数和存放方式是不同的，故在定义指针变量时，必须指定其基本数据类型，另外，指针变量中只能存放地址，就像一个整形变量只能存放整型数值一样，不能将一个常量赋值给一个指针变量</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>学完之后你脑海会产生这个图吗？</p>
+<p>哪部分比较简单？</p>
+<p>哪部分比较难需要再认真看一遍？<br>(哪些是认真看一遍就可以的？而哪些是需要反复学习总结的？)</p>
+<p>你认为重点在哪里？</p>
+<p><img src="http://i2.buimg.com/567571/5e3afcc67151c54f.jpg" alt=""></p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>编程语言的学习，最终都是要回到实际动手操作上来的，毕竟不是说只要把各个知识点都记住了，我们就能够写程序的。无论你前边理论学习的多好，不能写，不能实际的用来解决问题，都是白扯，实践很重要！正所谓实践是检验真理的唯一标准，我们前边学习了、理解了，但是自己理解的对不对？只有动手写程序，让程序跑起来，才能够检验和证明。</p>
+<p>当然，就像我们从蹒跚学步，到如今的健步如飞，任何事情都需要一个循序渐进的过程。我们学习也是如此，C语言是面向过程的语言，面向过程，我自己的理解就是，它模拟我们日常的行为习惯，也就是说，你怎么想的，就怎么做，就可以了，而最终你会发现，我们所写的代码都是由一个个函数构成的，而函数又都是由顺序、分支、循环这三个结构构成的。下面通过一个简单的例子来开始我们的编程之路，并实际的理解面向过程的思想：</p>
+<h3 id="思考：如何把一头大象装进冰箱呢？"><a href="#思考：如何把一头大象装进冰箱呢？" class="headerlink" title="思考：如何把一头大象装进冰箱呢？"></a>思考：如何把一头大象装进冰箱呢？</h3><p>看到这个问题，我们应该想到什么？大象怎么能装进冰箱呢？！！！如果这么想，那我们就什么都做不了。如果你非要这么想，那么我们可以再次假设，怎么把一瓶水装进冰箱呢？首先、打开冰箱门，第二、把一瓶水放进冰箱，第三、关闭冰箱门，我们大脑中是这么想的，现实中，我们也是如此做的，这一系列操作就是一个过程。那么回到我们的问题上来，如何把一头大象装进冰箱呢？我想这个时候应该就都知道如何做了。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1. 打开冰箱门</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">openfridge</span><span class="params">(<span class="keyword">char</span>[] fridge)</span> </span>&#123;</div><div class="line">    打开冰箱门</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2. 把大象装进冰箱</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">load</span><span class="params">(<span class="keyword">char</span>[] fridge, <span class="keyword">char</span>[] elephant)</span> </span>&#123;</div><div class="line">    把大象装进冰箱</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 3. 关闭冰箱门</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">closefridge</span><span class="params">(<span class="keyword">char</span>[] fridge)</span> </span>&#123;</div><div class="line">    关闭冰箱门</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="不要立即动手写代码"><a href="#不要立即动手写代码" class="headerlink" title="不要立即动手写代码"></a>不要立即动手写代码</h3><p>根据我们的想法，我们写了三个函数，就解决了这个问题，之后我们只需要在main()函数中分别调用这三个函数，你就可以把任意一头大象装进冰箱，想一想，如此简单的，你就把一头大象，装进了冰箱！！！</p>
+<p>于此类似的，在我们动手开始写代码之前，都应该认真思考，我们应该怎么做才能解决？将一个大的问题进行分解，顺序的分为1、2、3、…n个步骤或者多个小问题，一个一个的解决它</p>
+<h3 id="回到课本"><a href="#回到课本" class="headerlink" title="回到课本"></a>回到课本</h3><p>当我们动手写代码时，在使用某些知识时，如果不能明确，一定要定位到课本的相应位置，重新复习，要利用好课本的目录，以快速查找知识点。</p>
+<p>在最后的复习阶段，我想也应该重新回到课本，重新梳理各章节知识点，查漏补缺。</p>
+<h3 id="养成好的编码习惯"><a href="#养成好的编码习惯" class="headerlink" title="养成好的编码习惯"></a>养成好的编码习惯</h3><p>在我们动手开始写代码的时候，一定会发生一些这样或那样的小问题，使我们的代码不能正确运行。有些是知识上的欠缺，那么就应该回归课本，就出错的这个知识点进行重新学习，而另外一些，往往是我们的粗心大意造成的。我们应该在最初的学习过程中，就养成一个良好的编码习惯，来尽最大可能的避免犯一些愚蠢的错误。下面是一些简单的例子</p>
+<p>不要省略 {}<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不好的例子</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">    <span class="comment">// 任何时候都应该加上花括号</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意每条语句都应该及时的以‘;’结尾<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i;</div></pre></td></tr></table></figure></p>
+<p>注意代码缩进！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不好的例子</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 好的例子</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>及时换行<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不好的例子</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"..."</span>);<span class="built_in">printf</span>(<span class="string">"..."</span>);</div><div class="line"></div><div class="line"><span class="comment">// 好的例子</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"..."</span>);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"..."</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>当我们弄明白C语言都有些什么，并且开始动手编程时，我们的学习过程应当是基于问题的学习。在实际的编程中发现问题，之后解决问题，不断反复。</p>
+<p>最终是使我们真正掌握知识的，就是不断的重复…</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/12/Java多线程下载/" rel="next" title="Java多线程下载">
+                <i class="fa fa-chevron-left"></i> Java多线程下载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Tennyson" />
+          <p class="site-author-name" itemprop="name">Tennyson</p>
+          <p class="site-description motion-element" itemprop="description">愿岁月锤炼你一副丰满的灵魂和清瘦的欲望</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论"><span class="nav-number">2.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序、分支、循环"><span class="nav-number">2.2.</span> <span class="nav-text">顺序、分支、循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">2.3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">2.4.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">2.5.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">3.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：如何把一头大象装进冰箱呢？"><span class="nav-number">3.1.</span> <span class="nav-text">思考：如何把一头大象装进冰箱呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不要立即动手写代码"><span class="nav-number">3.2.</span> <span class="nav-text">不要立即动手写代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回到课本"><span class="nav-number">3.3.</span> <span class="nav-text">回到课本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#养成好的编码习惯"><span class="nav-number">3.4.</span> <span class="nav-text">养成好的编码习惯</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结-1"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tennyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
